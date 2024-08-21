@@ -1,0 +1,39 @@
+<?php
+
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('inicio', function () {
+    return view('login');
+})->name('inicio');
+
+Route::get('principal', function () {
+    return view('inicio');
+})->name('principal');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::controller(AdminController::class)->group(function(){
+    Route::get('Admin','admin');
+    Route::get('GestionUsuarios','GestionUsuarios');
+});
+
+Route::get('/GestionUsuarios', [AdminController::class, 'index'])->name('GestionUsuarios');
+Route::post('GestionUsuarios', [AdminController::class, 'store'])->name('admin.store');
+Route::put('GestionUsuarios/{id}', [AdminController::class, 'update'])->name('admin.update');
+Route::delete('GestionUsuarios/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
+
+require _DIR_.'/auth.php';
