@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/DiseñoGestion.css">
+</head>
+
+<body class="bg-primary font-sans leading-normal tracking-normal">
+
+    <!-- Sidebar -->
+    <div class="flex h-screen">
+        <div class="bg-secondary w-64 p-4">
+            <a href="Admin" class="text-white block py-2">
+            <h2 class="text-white text-lg font-bold mb-4">Salud y Educación</h2>
+            </a>
+            <ul>
+                <li><a href="#" class="text-white block py-2">Tabla</a></li>
+                <li><a href="#" class="text-white block py-2">Cerrar sesión</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-10 relative">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h1 class="text-2xl font-bold text-dark mb-4">Bienvenido de nuevo...</h1>
+                <p>Aquí puedes hacer lo esencial</p>
+
+                <div class="mt-6 flex items-center justify-between">
+                    <button id="toggleAddUserForm" class="bg-accent text-white py-2 px-4 rounded hover:bg-dark mb-2">Agregar Usuario</button>
+                    <input type="text" placeholder="Buscar usuarios..." class="border border-gray-300 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-accent">
+                </div>
+            </div>
+
+            <!-- Tabla de Usuarios -->
+            <div class="mt-8 bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold text-dark mb-4">Usuarios Registrados</h2>
+                <table class="min-w-full bg-white border rounded-lg mb-6">
+                    <thead class="bg-secondary text-white">
+                        <tr>
+                            <th class="py-2 px-4">ID</th>
+                            <th class="py-2 px-4">Nombre</th>
+                            <th class="py-2 px-4">Correo Electrónico</th>
+                            <th class="py-2 px-4">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($users as $user)
+                        <tr class="border-t">
+                            <td class="py-2 px-4">{{ $user->id }}</td>
+                            <td class="py-2 px-4">{{ $user->name }}</td>
+                            <td class="py-2 px-4">{{ $user->email }}</td>
+                            <td class="py-2 px-4">
+                                <button onclick="openEditUserForm({{ $user->id }}, '{{ $user->name }}', '{{ $user->email }}')" class="text-accent">Editar</button>
+                                <form action="{{ route('admin.destroy', $user->id) }}" method="POST" class="inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-red-600">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay"></div>
+
+    <!-- Formulario de Agregar Usuario -->
+    <div class=" w-3/4 bg-white p-4 rounded-lg z-50 absolute" id="addFlightForm" style="display: none;">
+        <h2 class="text-2xl font-semibold mb-4">Agregar Usuario</h2>
+        <form method="POST" action="{{ route('admin.store') }}">
+            @csrf
+            <div class="mb-4">
+                <label for="name" class="block text-dark">Nombre</label>
+                <input type="text" name="name" id="name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent" required>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-dark">Correo Electrónico</label>
+                <input type="email" name="email" id="email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent" required>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-dark">Contraseña</label>
+                <input type="password" name="password" id="password" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent" required>
+            </div>
+            <button type="submit" class="bg-accent text-white py-2 px-4 rounded hover:bg-dark">Agregar Usuario</button>
+            <button id="cancelAddUserForm" type="button" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-700 ml-2">Cancelar</button>
+        </form>
+    </div>
+
+    <!-- Formulario de Editar Usuario -->
+    <div id="editUserForm" class="w-3/4 bg-white p-4 rounded-lg z-50 absolute hidden">
+        <h2 class="text-2xl font-semibold mb-4">Editar Usuario</h2>
+        <form method="POST" id="editUserFormAction">
+            @csrf
+            @method('PUT')
+            <div class="mb-4">
+                <label for="edit_name" class="block text-dark">Nombre</label>
+                <input type="text" name="name" id="edit_name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent" required>
+            </div>
+            <div class="mb-4">
+                <label for="edit_email" class="block text-dark">Correo Electrónico</label>
+                <input type="email" name="email" id="edit_email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent" required>
+            </div>
+            <button type="submit" class="bg-accent text-white py-2 px-4 rounded hover:bg-dark">Guardar Cambios</button>
+            <button id="cancelEditUser" type="button" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-700 ml-2">Cancelar</button>
+        </form>
+    </div>
+    <script src="../JS/gestionUser.js"></script>
+</body>
+</html>
