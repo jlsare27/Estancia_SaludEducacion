@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- Contenedor principal -->
+    <div class="min-h-screen flex">
+        <!-- Barra lateral -->
+        <aside class="w-1/5 bg-green-200 p-5 flex flex-col justify-between">
+            <div>
+                <h1 class="text-xl font-bold mb-8">Salud y Educación</h1>
+                <nav class="flex flex-col space-y-4">
+                    <a href="#" class="text-lg font-semibold text-gray-700">Tabla</a>
+                    <a href="#" class="text-lg font-semibold text-gray-700">Cerrar sesión</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="w-4/5 bg-green-50 p-8">
+            <!-- Barra superior -->
+            <header class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-semibold">Bienvenido de nuevo...</h2>
+                <div class="flex items-center space-x-4">
+                    <div class="relative w-10 h-10">
+                        <img src="img/perfil_icono.png" alt="Perfil" class="w-full h-full rounded-full">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Sección de bienvenida y recordatorios -->
+            <div class="grid grid-cols-2 gap-6 mb-8">
+                <!-- Bienvenido de nuevo -->
+                <div class="bg-white p-6 rounded-lg shadow-md flex justify-between items-center">
+                    <div>
+                        <h3 class="font-semibold text-lg">Bienvenido de nuevo...</h3>
+                        <p class="text-gray-600">Aquí puedes hacer lo esencial</p>
+                    </div>
+                    <img src="img/doctor.png" alt="Doctora" class="h-24 w-24">
+                </div>
+
+                <!-- Recordatorios -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-semibold text-lg mb-4">Recordatorios.</h3>
+                    <div class="flex items-center space-x-4">
+                        <input type="text" placeholder="Nuevo recordatorio" class="flex-grow p-2 border border-gray-300 rounded-lg">
+                        <button class="bg-green-400 text-white p-2 rounded-lg">Crear</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de tarjetas y calendario -->
+            <div class="grid grid-cols-3 gap-6 mb-8">
+                <!-- Agregar curso -->
+                <div class="bg-white p-6 rounded-lg shadow-md flex justify-between items-center">
+                    <div class="flex items-center space-x-4">
+                        <img src="img/curso.png" alt="Agregar curso" class="h-10 w-10">
+                        <p class="font-semibold text-lg">Agregar curso</p>
+                    </div>
+                    <button class="bg-green-400 text-white p-2 rounded-full">+</button>
+                </div>
+
+                <!-- Agregar consultas -->
+                <div class="bg-white p-6 rounded-lg shadow-md flex justify-between items-center">
+                    <div class="flex items-center space-x-4">
+                        <img src="img/calendario.png" alt="Agregar consultas" class="h-10 w-10">
+                        <p class="font-semibold text-lg">Agregar Consultas</p>
+                    </div>
+                    <button class="bg-green-400 text-white p-2 rounded-full">+</button>
+                </div>
+
+                <!-- Alumnos -->
+                <div class="bg-white p-6 rounded-lg shadow-md flex justify-between items-center">
+                    <div class="flex items-center space-x-4">
+                        <img src="img/alumno.png" alt="Alumnos" class="h-10 w-10">
+                        <p class="font-semibold text-lg">Alumnos</p>
+                    </div>
+                    <a href="GestionUsuarios" class="text-white block py-2">
+                    <button class="bg-green-400 text-white p-2 rounded-full">+</button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Calendario -->
+            <div class="bg-white p-6 rounded-lg shadow-md h-64">
+                <iframe src="https://calendar.google.com/calendar/embed?src=es.mexican%23holiday%40group.v.calendar.google.com&ctz=America%2FMexico_City" style="border: 0" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
