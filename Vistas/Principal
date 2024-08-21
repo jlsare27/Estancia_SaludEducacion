@@ -1,0 +1,110 @@
+!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50">
+    <header class="bg-white shadow">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold text-gray-700">Salud y Educación</div>
+            <nav class="space-x-4 text-gray-700">
+                <a href="#" class="hover:text-green-500">Medicina preventiva</a>
+                <a href="#" class="hover:text-green-500">Psicología</a>
+                <a href="#" class="hover:text-green-500">Cursos</a>
+                <a href="#" class="hover:text-green-500">Ayuda</a>
+                <a href="#" class="hover:text-green-500">Contacto</a>
+                <a href="#" class="hover:text-green-500">Registrarse</a>
+                <a href="#" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Iniciar sesión</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="bg-green-50 py-10">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10">
+                <h1 class="text-3xl font-bold text-green-700">Bienvenidos a Salud y Educación a un solo click!!</h1>
+                <p class="text-xl text-gray-600 mt-2">Aquí encontrarás todo para mantener un cuerpo y una mente sana.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded shadow relative">
+                    <img src="img/I2.png" alt="Medicina Preventiva" class="w-12 h-12 mx-auto mb-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Consultas de Medicina Preventiva.</h3>
+                    <p class="text-gray-600 mb-4">En nuestras consultas de medicina preventiva, nos enfocamos en mantener tu salud y bienestar.</p>
+                    <a href="#" class="text-green-500 hover:underline absolute bottom-4 right-4">Leer más</a>
+                </div>
+
+                <div class="bg-white p-6 rounded shadow relative">
+                    <img src="img/I3.png" alt="Consultas de Psicología" class="w-12 h-12 mx-auto mb-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Consultas de Psicología.</h3>
+                    <p class="text-gray-600 mb-4">Nuestras consultas de psicología están diseñadas para apoyar tu bienestar mental y emocional.</p>
+                    <a href="#" class="text-green-500 hover:underline absolute bottom-4 right-4">Leer más</a>
+                </div>
+
+                <div class="bg-white p-6 rounded shadow relative">
+                    <img src="img/I4.png" alt="Cursos de Medicina Preventiva" class="w-12 h-12 mx-auto mb-4">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Cursos de Medicina preventiva.</h3>
+                    <p class="text-gray-600 mb-4">Nuestros cursos de desarrollo personal y salud mental están diseñados para mejorar tu bienestar general.</p>
+                    <a href="#" class="text-green-500 hover:underline absolute bottom-4 right-4">Leer más</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="bg-white py-10">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Descubre los Beneficios de Nuestros Servicios.</h2>
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2">
+                <div class="mb-6 flex items-start">
+                    <img src="img/I6.png" alt="Medicina Preventiva" class="w-16 h-16 mr-4">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-700 mb-2">Medicina Preventiva</h3>
+                        <p class="text-gray-600">Mantén tu salud en óptimas condiciones con evaluaciones regulares y planes de cuidado personalizados para prevenir enfermedades antes de que se desarrollen.</p>
+                    </div>
+                </div>
+                <div class="mb-6 flex items-start">
+                    <img src="img/I7.png" alt="Consultas de Psicología" class="w-16 h-16 mr-4">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-700 mb-2">Consultas de Psicología</h3>
+                        <p class="text-gray-600">Apoya tu bienestar emocional con el apoyo de profesionales dedicados, mejorando tu capacidad para enfrentar el estrés, la ansiedad y la depresión.</p>
+                    </div>
+                </div>
+                <div class="mb-6 flex items-start">
+                    <img src="img/I5.png" alt="Cursos de Medicina Preventiva" class="w-16 h-16 mr-4">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-700 mb-2">Cursos de Medicina Preventiva</h3>
+                        <p class="text-gray-600">Adquiere los conocimientos prácticos para gestionar el estrés, mejorar tus relaciones y alcanzar tus metas personales, guiado por expertos en la materia.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="img/I8.png" alt="Doctor" class="w-full h-auto">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <footer class="bg-green-500 py-6 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold">Contacto</h3>
+                <p>771 XXXX XXX</p>
+                <p>salud@email.com</p>
+            </div>
+            <div class="space-x-4">
+                <a href="#" class="hover:text-gray-300"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="#" class="hover:text-gray-300"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="#" class="hover:text-gray-300"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
