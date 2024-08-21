@@ -1,0 +1,76 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
+class AdminController extends Controller
+{
+    public function Admin(){
+        return view('admin');
+    }
+
+    public function GestionUsuarios(){
+        return view('GestionUsuarios');
+    }
+
+    public function index()
+    {
+        // Obtener todos los usuarios
+        $users = User::all();
+        return view('GestionUsuarios', compact('users'));
+    }
+
+    public function store(Request $request)
+    {
+        // Validar y crear un nuevo usuario
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('admin.index')->with('success', 'Usuario creado exitosamente.');
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validar y actualizar el usuario
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        if ($request->filled('password')) {
+            $request->validate([
+                'password' => 'string|min:8',
+            ]);
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return redirect()->route('admin.index')->with('success', 'Usuario actualizado exitosamente.');
+    }
+
+    public function destroy($id)
+    {
+        // Eliminar usuario
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('admin.index')->with('success', 'Usuario eliminado exitosamente.');
+    }
+}
